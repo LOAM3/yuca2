@@ -91,20 +91,18 @@ void Sound_play(uint32_t frec,uint32_t dura)
 
 void salsa(void)
 {
-  Sound_play(440,100);
-  Sound_play(440,100);
-  Sound_play(440,100);
-  Sound_play(349,100);
-  Sound_play(440,100);
-  Sound_play(349,100);
-  Sound_play(440,100);
-  Sound_play(440,100);
-  Sound_play(440,100);
-  Sound_play(349,100);
-  Sound_play(440,100);
-  Sound_play(349,100);
-  HAL_Delay(100);
-  Sound_play(440,100);
+  static const uint16_t melody[] = {
+    294, 294, 587, 440, 415, 392, 349, 294, 349, 392,
+    262, 262, 587, 440, 415, 392, 349, 294, 349, 392,
+    247, 247, 587, 440, 415, 392, 349, 294, 349, 392,
+    233, 233, 587, 440, 415, 392, 349, 294, 349, 392
+  };
+
+  for (uint32_t nota = 0; nota < sizeof(melody) / sizeof(melody[0]); nota++)
+  {
+    Sound_play(melody[nota], 100);
+  }
+  HAL_Delay(250);
 }
 
 
